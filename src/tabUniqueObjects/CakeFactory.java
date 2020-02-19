@@ -40,7 +40,8 @@ public class CakeFactory {
                     cakes[i] = addCake();
                     while (isDuplicated){
                         for (int j=0; j<i; j++){
-                            if (cakes[i].equals(cakes[j])){
+                            if (cakes[counter].equals(cakes[j])){
+                                //zamysl: przechodzenie po wszystkich obiektach istniejacych
                                 //jak dodam dwa razy zle ciasto, to przechodze do Cake nr nastepny ;/
                                 System.out.println("This cake exists in the menu, Provide other cake.");
                                 cakes[i] = addCake();
