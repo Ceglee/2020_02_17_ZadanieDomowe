@@ -4,11 +4,29 @@ public class ShapeCalculator implements Calc2D, Calc3D{
 
     @Override
     public double shapeArea(GeometricShape shape) {
-        return 0;
+        double shapeArea=0;
+        if (shape instanceof Circle){
+            shapeArea=Math.PI * Math.pow(((Circle) shape).getRadius(),2);
+            return shapeArea;
+        }
+        else if (shape instanceof Rectangle){
+            shapeArea=((Rectangle) shape).getHeight()*((Rectangle) shape).getWidth();
+            return shapeArea;
+        }
+        return shapeArea;
     }
 
     @Override
     public double volume(Shape3D shape) {
-        return 0;
+        double volume = 0;
+        if (shape instanceof Ball){
+            volume = 4/3 * Math.PI * Math.pow(((Ball) shape).getRadius(),3);
+            return volume;
+        }
+        else if (shape instanceof Cube){
+            volume = ((Cube) shape).getHeight() * ((Cube) shape).getWidth() * ((Cube) shape).getDepth();
+            return volume;
+        }
+        return volume;
     }
 }
