@@ -1,59 +1,32 @@
 package tabUniqueObjects;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class CakeFactory {
-    int numberOfCakes;
 
-    private CakeMenu addCake() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Provide a name: ");
-        String name = scanner.nextLine();
-        System.out.print("Provide a flavour: ");
-        String flavour = scanner.nextLine();
-        System.out.print("Provide a number of layers: ");
-        int numberOfLayers = scanner.nextInt();
-        CakeMenu cake = new CakeMenu(name, flavour, numberOfLayers);
-        return cake;
-    }
+    public CakeMenu[] createCakeMenu(int numberOfCakes) {
 
-    CakeMenu[] createCakeMenu(int numberOfCakes) {
-
-        CakeMenu[] cakes = new CakeMenu[numberOfCakes];
-        boolean isWithinMenu = true;
-        System.out.println("Add "+numberOfCakes+" cakes to the menu: ");
-
-        int counter=0;
-        while (isWithinMenu){
-            for (int i = 0; i <numberOfCakes; i++) {
-                    System.out.println("---> Cake nr " + (i + 1));
-                    cakes[i] = addCake();
-
-                if (i>=i){
-                    if (i==1){
-                        while(cakes[i].equals(cakes[i-1])){
-                            System.out.println("This cake exists in the menu, Provide other cake.");
-                            cakes[i] = addCake();
-                        }
-                    }
-                    else if (i==2){
-                        while(cakes[i].equals(cakes[i-1]) || cakes[i].equals(cakes[i-2])){
-                            System.out.println("This cake exists in the menu, Provide other cake.");
-                            cakes[i] = addCake();
-                        }
-                    }
-                    else if (i==3){
-                        while (cakes[i].equals(cakes[i-1]) || cakes[i].equals(cakes[i-2]) || cakes[i].equals(cakes[i-3])){
-                            System.out.println("This cake exists in the menu, Provide other cake.");
-                            cakes[i] = addCake();
-                        }
-                    }
-                }
-
-            }
-            isWithinMenu = false;
+        if (numberOfCakes <= 0) {
+            System.out.println("Invalid number of cakes, you are not hungry!");
+            return new CakeMenu[0];
         }
+
+        System.out.println("Add " + numberOfCakes + " cakes to the menu: ");
+        CakeMenu[] cakes = new CakeMenu[numberOfCakes];
+
+        for (int i = 0; i < cakes.length;) {
+
+            System.out.println("---> Cake nr " + (i + 1));
+            CakeMenu cake = createCake();
+
+            if (cakeExists(cakes, cake)) {
+                System.out.println("This cake exists in the menu, Provide other cake.");
+
+            } else {
+                cakes[i++] = cake;
+            }
+        }
+
         return cakes;
     }
 
@@ -63,8 +36,28 @@ public class CakeFactory {
         }
     }
 
+    private CakeMenu createCake() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Provide a name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Provide a flavour: ");
+        String flavour = scanner.nextLine();
+
+        System.out.print("Provide a number of layers: ");
+        int numberOfLayers = scanner.nextInt();
+
+        return new CakeMenu(name, flavour, numberOfLayers);
+    }
+
+    private boolean cakeExists(CakeMenu[] cakes, CakeMenu cakeCandidate) {
+        for (CakeMenu cake: cakes) {
+            if (cakeCandidate.equals(cake)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
-
-
-

@@ -1,7 +1,6 @@
 package tabUniqueObjects;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 public class CakeMenu {
     private String name;
