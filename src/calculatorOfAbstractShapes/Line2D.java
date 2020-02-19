@@ -1,5 +1,7 @@
 package calculatorOfAbstractShapes;
 
+import static java.lang.Math.sqrt;
+
 public class Line2D extends Shape2D {
     private double firstPointX;
     private double firstPointY;
@@ -44,5 +46,13 @@ public class Line2D extends Shape2D {
 
     public void setSecondPointY(double secondPointY) {
         this.secondPointY = secondPointY;
+    }
+
+
+    double lineLength(){
+        double diffX = secondPointX-firstPointX;
+        double diffY = secondPointY-firstPointY;
+        double lineLength=sqrt(diffX*diffX+diffY*diffY);
+        return lineLength;
     }
 }

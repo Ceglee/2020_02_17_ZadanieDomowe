@@ -1,5 +1,7 @@
 package calculatorOfAbstractShapes;
 
+import static java.lang.Math.sqrt;
+
 public class ShapeCalculator implements Calc2D, Calc3D{
 
     @Override
@@ -24,9 +26,10 @@ public class ShapeCalculator implements Calc2D, Calc3D{
             return volume;
         }
         else if (shape instanceof Cube){
-            volume = ((Cube) shape).getHeight() * ((Cube) shape).getWidth() * ((Cube) shape).getDepth();
+            volume = ((Cube) shape).getHeight() * ((Cube) shape).getHeight() * ((Cube) shape).getHeight();
             return volume;
         }
         return volume;
     }
+
 }
