@@ -20,7 +20,7 @@ public class Main {
         Shape[] shapes = new Shape[]{line2D, circle, rectangle, ball, cube};
 
         for (int i=0; i<shapes.length; i++){
-            if (shapes[i] instanceof Line2D) lineCalc.lineLength(line2D);
+            if (shapes[i] instanceof Line2D) calculatedLine = lineCalc.lineLength(line2D);
             else if (shapes[i] instanceof Circle) calculatedCircleArea = shapeCalculator.shapeArea(circle);
             else if (shapes[i] instanceof Rectangle) calculatedRectangleArea = shapeCalculator.shapeArea(rectangle);
             else if (shapes[i] instanceof Ball) calculatedBallVolume = shapeCalculator.volume(ball);
