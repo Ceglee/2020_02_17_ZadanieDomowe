@@ -20,37 +20,22 @@ public class Main {
         Shape[] shapes = new Shape[]{line2D, circle, rectangle, ball, cube};
 
         for (int i=0; i<shapes.length; i++){
-            if (shapes[i] instanceof Line2D)
-                lineCalc.lineLength(line2D);
-            else if (shapes[i] instanceof Circle){
-                calculatedCircleArea = shapeCalculator.shapeArea(circle);
-            }
-            else if (shapes[i] instanceof Rectangle){
-                calculatedRectangleArea = shapeCalculator.shapeArea(rectangle);
-            }
-            else if (shapes[i] instanceof Ball){
-                calculatedBallVolume = shapeCalculator.volume(ball);
-            }
+            if (shapes[i] instanceof Line2D) lineCalc.lineLength(line2D);
+            else if (shapes[i] instanceof Circle) calculatedCircleArea = shapeCalculator.shapeArea(circle);
+            else if (shapes[i] instanceof Rectangle) calculatedRectangleArea = shapeCalculator.shapeArea(rectangle);
+            else if (shapes[i] instanceof Ball) calculatedBallVolume = shapeCalculator.volume(ball);
             calculatedCubeVolume = shapeCalculator.volume(cube);
         }
 
-
         for (int i=0; i<shapes.length; i++){
-            if (shapes[i] instanceof Line2D){
+            if (shapes[i] instanceof Line2D)
                 System.out.println("Odcinek wyznaczony przez wspolrzedne ["
                         +line2D.getFirstPointX()+","+line2D.getFirstPointY()
                         +"], ["+line2D.getSecondPointX()+","+line2D.getSecondPointY()+"] ma dlugosc "
                         +calculatedLine);
-            }
-            else if (shapes[i] instanceof Circle){
-                System.out.println("Kolo o promieniu R="+circle.getRadius()+" ma pole = "+calculatedCircleArea);
-            }
-            else if (shapes[i] instanceof Rectangle){
-                System.out.println("Prostokat o dlugosciach bokow A="+rectangle.getWidth()+" i B="+rectangle.getHeight()+" ma pole = "+ calculatedRectangleArea);
-            }
-            else if (shapes[i] instanceof Ball){
-                System.out.println("Kula o promieniu R="+ball.getRadius()+" ma objetosc=" +calculatedBallVolume);
-            }
+            else if (shapes[i] instanceof Circle) System.out.println("Kolo o promieniu R="+circle.getRadius()+" ma pole = "+calculatedCircleArea);
+            else if (shapes[i] instanceof Rectangle) System.out.println("Prostokat o dlugosciach bokow A="+rectangle.getWidth()+" i B="+rectangle.getHeight()+" ma pole = "+ calculatedRectangleArea);
+            else if (shapes[i] instanceof Ball) System.out.println("Kula o promieniu R="+ball.getRadius()+" ma objetosc=" +calculatedBallVolume);
             else  System.out.println("Szescian o krawedzi A="+cube.getHeight()+" ma objetosc= "+ calculatedCubeVolume);
         }
 
