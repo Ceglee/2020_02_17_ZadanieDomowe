@@ -31,26 +31,27 @@ public class CakeFactory {
         int counter=0;
         while (isWithinMenu){
             for (int i = 0; i <numberOfCakes; i++) {
-                if (i==0){
                     System.out.println("---> Cake nr " + (i + 1));
                     cakes[i] = addCake();
-                }
-                else if (i>=1){
-                    System.out.println("---> Cake nr " + (i + 1));
-                    cakes[i] = addCake();
-                    while (isDuplicated){
-                        for (int j=0; j<i; j++){
-                            if (cakes[counter].equals(cakes[j])){
-                                //zamysl: przechodzenie po wszystkich obiektach istniejacych
-                                //jak dodam dwa razy zle ciasto, to przechodze do Cake nr nastepny ;/
-                                System.out.println("This cake exists in the menu, Provide other cake.");
-                                cakes[i] = addCake();
-                                isDuplicated=true;
-                            }
-                        }
-                        isDuplicated = false;
+
+                if (i==1){
+                    while(cakes[i].equals(cakes[i-1])){
+                        System.out.println("This cake exists in the menu, Provide other cake.");
+                        cakes[i] = addCake();
                     }
-                    counter++;
+                }
+
+                else if (i==2){
+                    while(cakes[i].equals(cakes[i-1]) || cakes[i].equals(cakes[i-2])){
+                        System.out.println("This cake exists in the menu, Provide other cake.");
+                        cakes[i] = addCake();
+                    }
+                }
+                else if (i==3){
+                    while (cakes[i].equals(cakes[i-1]) || cakes[i].equals(cakes[i-2]) || cakes[i].equals(cakes[i-3])){
+                        System.out.println("This cake exists in the menu, Provide other cake.");
+                        cakes[i] = addCake();
+                    }
                 }
             }
             isWithinMenu = false;
